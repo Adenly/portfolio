@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Adenly Mathebula</title>
+	<link rel="stylesheet" href="newfolio.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script> <!--waypoints-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> <!--OwlCarousel2-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+/*Variables*/
+:root {
+	--fuentemain: 'Ubuntu', sans-serif;
+	--fuentesecond: 'Poppins', sans-serif;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+.max-width {
+	max-width: 1300px;
+	padding: 0 80px;
+	/*background: grey;*/
+	margin: auto;
+}
+
+/*Navbar Style*/
+.navbar {
+	position: fixed;
+	width: 100%;
+	z-index: 999;
+	padding: 30px 0;
+	background: #000;
+	font-family: var(--fuentemain);
+	transition: all 0.3s ease;
+}
+
+.navbar.sticky{
+	padding: 15px 0;
+	background: crimson;
+}
+
+.navbar .max-width {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.navbar .logo a {
+	color: #fff;
+	font-size: 35px;
+	font-weight: 600;
+}
+
+.navbar .logo a span {
+	color: crimson;
+	transition: all 0.3s ease;
+}
+
+.navbar.sticky .logo a span {
+	color: #fff;
+}
+
+.navbar .logo i {
+	color: #3a6186;
+	font-size: 35px;
+	font-weight: 600;
+}
+
+.navbar.sticky .logo i {
+	color: #fff;
+}
+
+.navbar .menu li {
+	list-style: none;
+	display: inline-block;
+}
+
+.navbar .menu li a {
+	color: #fff;
+	font-size: 18px;
+	font-weight: 500;
+	margin-left: 25px;
+	transition: color 0.3s ease;
+}
+
+.navbar .menu li a:hover{
+	color: crimson;
+}
+
+.navbar.sticky .menu li a:hover {
+	color: #111;
+}
+
+/*Btn*/
+.menu-btn {
+	color: #fff;
+	font-size: 23px;
+	cursor: pointer;
+	display: none;
+}
+
+.scroll-up-btn {
+	position: fixed;
+	height: 45px;
+	width: 42px;
+	background: crimson;
+	right: 30px;
+	bottom: 10px;
+	text-align: center;
+	line-height: 45px;
+	color: #fff;
+	z-index: 9999;
+	font-size: 30px;
+	border-radius: 6px;
+	cursor: pointer;
+	opacity: 0;
+	pointer-events: none;
+	transition: all 0.3s ease;
+}
+
+.scroll-up-btn.show {
+	bottom: 30px;
+	opacity: 1;
+	pointer-events: auto;	
+}
+
+/*Home Style*/
+.home {
+	background: linear-gradient(to bottom, #B11F8B, #EB7139);
+	height: 100vh;
+	background-size: cover;
+	min-height: 500px;
+	
+}
+
+
+section {
+	padding: 100px 0;
+}
+
+section .title {
+	position: relative;
+	text-align: center;
+	font-size: 40px;
+	font-weight: 500;
+	margin-bottom: 60px;
+	padding-bottom: 20px; 
+	font-family: var(--fuentemain);
+}
+
+section .title::before {
+	content: "";
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	width: 180px;
+	height: 3px;
+	background: #111;
+	transform: translateX(-50%);
+}
+
+section .title::after {
+	position: absolute;
+	bottom: -12px;
+	left: 50%;
+	font-size: 20px;
+	color: crimson;
+	padding: 4px; 
+	background: #fff;
+	transform: translateX(-50%);
+}
+
+/*About Section*/
+
+.about, .services, .portfolio, .contact, footer {
+	font-family: var(--fuentesecond);
+}
+
+.about .title::after {
+	content: "What I'm About"
+}
+
+.about .about-content, 
+.services .serv-content,
+.contact .contact-content {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.about .about-content .left {
+	width: 45%;
+}
+
+.about .about-content .left img {
+	height: 400px;
+	width: 400px;
+	object-fit: cover;
+	border-radius: 25px;
+}
+
+.about .about-content .right {
+	width: 55%;
+}
+
+.about .about-content .right .text {
+	font-size: 23px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.about .about-content .right .text span {
+	color: crimson;
+}
+
+.about .about-content .right p {
+	text-align: justify;
+}
+
+.about .about-content .right a {
+	display: inline-block;
+	background: crimson;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 500;
+	padding: 10px 30px;
+	margin-top: 20px;
+	border-radius: 6px;
+	border: 2px solid crimson; 
+	transition: all 0.5s ease;
+}
+
+.about .about-content .right a:hover {
+	color: crimson;
+	background: white;
+}
+.about .about-content .bottom{
+	display: inline-block;
+	background: #111;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 500;
+	padding: 10px 30px;
+	margin-top: 20px;
+	border-radius: 6px;
+	transition: all 0.5s ease;
+}
+.about .about-content .bottom a {
+	display: inline-block;
+	background: crimson;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 500;
+	padding: 10px 30px;
+	margin-top: 20px;
+	border-radius: 6px;
+	border: 2px solid crimson; 
+	transition: all 0.5s ease;
+}
+/*Services*/
+.services, .contact {
+	color: #fff;
+	background: #111;
+}
+
+.services .title::before, 
+.portfolio .title::before
+.contact .title::before {
+	background: #fff;
+}
+
+.services .title::after {
+	background: #111;
+	content: "what I do";
+}
+
+.services .serv-content .card {
+	width: calc(33% - 20px);
+	background: #222;
+	text-align: center;
+	border-radius: 6px;
+	padding: 20px 25px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.services .serv-content .card:hover {
+	background: crimson;
+}
+
+.services .serv-content .card .box {
+	transition: all 0.3s ease;
+}
+
+.services .serv-content .card:hover .box {
+	transform: scale(1.05);
+}
+
+.services .serv-content .card i {
+	font-size: 50px;
+	color: white;
+}
+
+.services .serv-content .card .text {
+	font-size: 25px;
+	font-weight: 500;
+	margin: 10px 0 7px 0;
+	color: crimson;
+}
+
+.services .serv-content .card:hover .text {
+	color: white;
+}
+
+/*Portfolio*/
+.portfolio .title::after {
+	content: "My Projects";
+	background: #fff;
+}
+
+.portfolio .carousel .card {
+	background: #222;
+	border-radius: 6px;
+	padding: 25px 35px;
+	transition: all 0.3s ease;
+}
+
+/**/
+.portfolio .carousel .card:hover {
+	background: crimson;
+}
+
+.portfolio .carousel .card .box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: white;
+	transition: all 0.3s ease;
+}
+
+.portfolio .carousel .card:hover {
+	transform: scale(1.05);
+}
+
+.portfolio .carousel .card .text {
+	font-size: 25px;
+	font-weight: 500;
+	margin: 10px 0 7px 0; 
+}
+
+.portfolio .carousel .card img {
+	height: 250px;
+	width: 250px;
+	object-fit: cover;
+	border-radius: 5px;
+	border: 5px solid crimson; /*Quitar*/
+	transition: all 0.3s ease;
+}
+
+.portfolio .carousel .card:hover img {
+	border-color: #fff;
+}
+
+.owl-dots {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.owl-dot {
+	height: 13px;
+	width: 13px;
+	margin: 0 5px;
+	outline: none!important;
+	border-radius: 50%;
+	border: 2px solid crimson!important;
+	transition: all 0.3s ease;
+}
+
+.owl-dot.active {
+	width: 35px;
+	border-radius: 14px;
+}
+
+.owl-dot.active,
+.owl-dot:hover {
+	background: crimson!important;
+}
+
+/*Contact*/
+.contact .title::after {
+	background: #111;
+	content: "get in touch"
+}
+
+.contact .contact-content .column {
+	width: calc(50% - 30px);
+}
+
+.contact .contact-content .text {
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.contact .contact-content .left p {
+	text-align: justify;
+}
+
+.contact .contact-content .left .icons {
+	margin: 10px 0;
+}
+
+.contact .contact-content .row {
+	display: flex;
+	height: 65px;
+	align-items: center;
+}
+
+.contact .contact-content .row .info {
+	margin-left: 30px;
+}
+
+.contact .contact-content .row i {
+	font-size: 25px;
+	color: crimson;
+}
+
+.contact .contact-content .info .head {
+	font-weight: 500;
+}
+
+.contact .contact-content .info .sub-title {
+	color: #ADA996;
+}
+
+.contact .right form .fields {
+	display: flex;
+}
+
+.contact .right form .field,
+.contact .right form .fields .field {
+	height: 45px;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.contact .right form .name {
+	margin-right: 10px;	
+}
+
+.contact .right form .email {
+	margin-left: 10px;	
+}
+
+.contact .right form .textarea {
+	height: 80px;
+	width: 100%;
+}
+
+.contact .right form .field input,
+.contact .right form .textarea textarea {
+	height: 100%;
+	width: 100%;
+	border: 1px solid lightgrey;
+	border-radius: 6px;
+	outline: none;
+	padding: 0 15px;
+	font-size: 17px;
+	font-family: var(--fuentesecond);
+}
+
+.contact .right form .textarea textarea {
+	padding-top: 10px;
+	resize: none;
+}
+
+.contact .right form .button {
+	height: 47px;
+	width: 170px;
+	margin-top: 10px;
+}
+
+.contact .right form .button button {
+	width: 100%;
+	height: 100%;
+	border: 2px solid crimson;
+	background: crimson;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 500;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.contact .right form .button button:hover {
+	color: crimson;
+	background: white;
+}
+
+/*footer*/
+footer {
+	padding: 20px 23px;
+	color: #111;
+	text-align: center;
+}
+
+footer span a{
+	color: crimson;
+	text-decoration: none;
+}
+
+footer span a:hover {
+	text-decoration: underline;
+}
+
+/*Responsive Media Query*/
+@media (max-width: 1300px) {
+	.home .max-width {
+		margin-left: 0px;
+}
+}
+
+@media (max-width: 1104px) {
+	.about .about-content .left img {
+		height: 350px;
+		width: 350px;
+	}
+}
+
+@media (max-width: 991px) {
+	.max-width {
+	padding: 0 50px;
+}
+}
+
+@media (max-width: 947px) {
+
+	.menu-btn {
+	display: block;
+	z-index: 999;
+}
+
+	.menu-btn i.active:before {
+		content: "\f00d";
+	}
+	.navbar .menu {
+		position: fixed;
+		height: 100vh;
+		width: 100%;
+		left: -100%;
+		top: 0;
+		background: #111;
+		text-align: center;
+		padding-top: 80px;
+		transition: all 0.3s ease;
+	}
+
+	.navbar .menu.active {
+		left: 0;
+	}
+
+	.navbar .menu li {
+		display: block;
+	}
+
+	.navbar .menu li a {
+		display: inline-block;
+		margin: 20px 0;
+		font-size: 25px;
+	}
+
+	.home .home-content .text-2 {
+		font-size: 70px;
+	}
+
+	.home .home-content .text-3 {
+		font-size: 35px;
+	}
+
+	.home .home-content a {
+		font-size: 23px;
+		padding: 10px 30px; 
+	}
+
+	.max-width {
+		max-width: 800px;	
+}
+	.about .about-content .column{
+		width: 100%;
+	}
+	.about .about-content .left{
+		display: flex;
+		justify-content: center;
+		margin: 0 auto 60px;
+	}
+
+	.about .about-content .right {
+		flex: 100%;
+	}
+
+	.services .serv-content .card {
+		width: calc(50% - 10px);
+		margin-bottom: 20px;
+	}
+
+	.contact .contact-content .column {
+		width: 100%;
+		margin-bottom: 35px;
+	}
+}
+
+@media (max-width: 690px) {
+	.max-width {
+		padding: 0 40px;
+}
+
+	.home .home-content .text-2 {
+		font-size: 60px;
+	}
+
+	.home .home-content .text-3 {
+		font-size: 32px;
+	}
+
+	.home .home-content a {
+		font-size: 20px;
+		padding: 9px 27px
+	}
+	.services .serv-content .card {
+		width: 100%;
+	}
+}
+
+@media (max-width: 510px) {
+	
+	.home .home-content .text-2 {
+		font-size: 45px;
+	}
+
+	.home .home-content .text-3 {
+		font-size: 27px;
+	}
+
+	.home .home-content a {
+		padding: 5px 20px
+	}
+}
+
+@media (max-width: 390px) {
+	.home .home-content .text-2 {
+		font-size: 40px;
+	}
+
+	.home .home-content .text-3 {
+		font-size: 26px;
+	}
+}
+
+@media (max-width: 362px) {
+	.navbar .logo a {
+	font-size: 25px;
+}
+
+	.navbar .logo i {
+	font-size: 22px;
+}
+
+	.home .home-content .text-1 .text-2 {
+		font-size: 20px;
+	}
+
+	.home .home-content .text-3 {
+		font-size: 20px;
+	}
+
+	.about .about-content .right .text {
+		font-size: 17px;
+		font-weight: 600;
+		margin-bottom: 10px;
+	}
+  
+  .services .title::after {
+	font-size: 16px;
+}
+
+	.portfolio .carousel .card img {
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
+}
+  footer {
+	padding: 20px 23px;
+	font-size: 15px;
+}
+}
+
+canvas {
+	 width: 100vw;
+	 height: 100vh;
+	 background: linear-gradient(to bottom, #B11F8B, #EB7139);
+}
+ @font-face {
+	 font-weight: normal;
+	 font-display: swap;
+	 font-family: "Adinda Melia";
+	 src: url("https://dineshbalaji.in/fonts/adinda-melia.regular.otf");
+}
+ .info-container {
+	 position: absolute;
+	 top: 50%;
+	 left: 50%;
+	 transform: translate(-50%, -50%);
+	 display: flex;
+	 flex-direction: col;
+	 flex-wrap: wrap;
+	 justify-content: center;
+	 min-width: 300px;
+	 padding: 20px 15px;
+	 border-radius: 10px;
+	 backdrop-filter: blur(5px);
+	 text-align: center;
+	 color: white;
+}
+ .info-container h1 {
+	 font-size: 16px;
+}
+ .info-container h1 span {
+	 margin-left: 20px;
+	 font-family: "Adinda Melia";
+	 color: #00DBDE;
+	 font-size: 2rem;
+}
+ @media screen and (min-width: 762px) {
+	 .info-container h1 span {
+		 font-size: 4rem;
+	}
+}
+ .info-container div {
+	 width: 100%;
+}
+ .info-container div a {
+	 font-family: "Fontawesome";
+	 color: white;
+	 padding: 7px;
+	 text-decoration: none;
+}
+ .info-container div a i {
+	 font-size: 20px;
+	 font-style: normal;
+}
+ @media screen and (min-width: 762px) {
+	 .info-container {
+		 min-width: 500px;
+	}
+	 .info-container h1 {
+		 font-size: 20px;
+	}
+	 .info-container h1 span {
+		 font-size: 50px;
+	}
+	 .info-container div a {
+		 padding: 10px;
+	}
+	 .info-container div a i {
+		 font-size: 25px;
+	}
+}
+ .portfolio-card-2-icons {
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+  /*   grid-template-columns: repeat(5, 1fr); */
+  /*   grid-gap: 1em; */
+  /*   place-items: center; */
+}
+.portfolio-card-2-icons i {
+  height: 3em;
+  width: 3em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #f1f1f1;
+  color: #f1f1f1;
+  cursor: pointer;
+  box-shadow: 0.025em 0.025em 0.15em rgba(0, 0, 0, 0.45);
+}
+.portfolio-card-2-icons [class*="fa-github"] {
+linear-gradient(to right, #ea1d6f 0%, #eb466b 100%)}
+.portfolio-card-2-icons [class*="fa-telegram"] {
+  background: linear-gradient(to right, #ea1d6f 0%, #eb466b 100%));
+}
+.portfolio-card-2-icons [class*="fa-envelope"] {
+  background: linear-gradient(to right, #ea1d6f 0%, #eb466b 100%));
+}
+.portfolio-card-2-icons [class*="fa-linkedin"] {
+  background: linear-gradient(to right, #ea1d6f 0%, #eb466b 100%);
+}
+.portfolio-card-2-icons [class*="fa-twitter"] {
+  background: linear-gradient(to right, #ea1d6f 0%, #eb466b 100%);
+  }
+</style>
+<body>
+	<div class="scroll-up-btn">
+		<i class="fas fa-angle-up"></i>
+	</div>
+	<nav class="navbar">
+		<div class="max-width">
+			<div class="logo"><a href="index.html">***</a></div>
+			<ul class="menu">
+				<li><a href="#home"><i class="fas fa-home"></i></a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#services">Services</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+			<div class="menu-btn">
+				<i class="fas fa-bars">
+				</i>
+				
+			</div>
+		</div>
+	</nav>
+
+	<section class="home" id="home">
+			<canvas id="landing-canvas"></canvas>
+<div class="info-container">
+    <h1>Hi, I'm<span>Adenly Mathebula</span></h1>
+   <div class="portfolio-card-2-icons">
+        <i class="fab fa-github"></i>
+        <i class="far fa-envelope"></i>
+        <i class="fab fa-linkedin-in"></i>
+        <i class="fab fa-twitter"></i>
+      </div>
+</div>
+		
+	</section>
+
+
+	<!--About Section-->
+	<section class="about" id="about">
+		<div class="max-width">
+			<h2 class="title">Get To Know Me..</h2>
+			<div class="about-content">
+				<div class="column left">
+					<img src="profile-1-0.jpg" alt="Adenly Mathebula">
+				</div>
+				<div class="column right">
+					<div class="text">My name is Adenly Mathebula, I'm a <span>Front-End Web Developer</span></div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					
+				</div>
+				<div class="column bottom">
+				 <div class="card card-body py-5">
+                        <h3>My Skills</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellat aspernatur natus rem vitae itaque?</p>
+                        <hr>
+                        <p class="h4 text-center">Languages</p>
+                        <hr>
+                        <h4>HTML 5</h4>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" style="width: 90%; color: crimson;"></div>
+                        </div>
+                        <h4>CSS 3</h4>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" style="width: 80%; color: crimson;"></div>
+                        </div>
+                        <h4>JavaScript</h4>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" style="width: 40%; color: crimson;"></div>
+                        </div>
+                        <h4>C++</h4>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" style="width: 0%; color: crimson;"></div>
+                        </div>
+                        <h4>Python</h4>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" style="width: 90%color: crimson;;"></div>
+                        </div>
+                        <hr>
+                        <p class="h4 text-center">Libraries, Frameworks, and Other Skills</p>
+                        <hr>
+                        <h4>Bootstrap 4</h4>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" style="width: 100%;color: crimson;"></div>
+                        </div>
+                        <h4>React JS</h4>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" style="width: 0%;color: crimson;"></div>
+                        </div>
+						<h4>Vue JS</h4>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" style="width: 0%;color: crimson;"></div>
+                        </div>
+                        <h4>Node JS</h4>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" style="width: 0%;color: crimson;"></div>
+                        </div>
+                        
+                        <h4>Git and GitHub</h4>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" style="width: 75%; color: crimson;"></div>
+                        </div>
+                    </div>
+				<a href="Brain abscess.pdf" download>Download Resume</a>
+		</div>
+	</section>
+
+	<!--Services Section-->
+	<section class="services" id="services">
+		<div class="max-width">
+			<h2 class="title">My services</h2>
+			<div class="serv-content">
+				<div class="card">
+					<div class="box">
+						<i class="fas fa-desktop"></i>
+						<div class="text">UI/UX Designs</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+				</div>
+				
+				<div class="card">
+					<div class="box">
+						<i class="fas fa-columns"></i>
+						<div class="text">Mobile Responsive Sites</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="box">
+						<i class="fas fa-atom"></i>
+						<div class="text">Web Applications</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+				</div>
+				<div class="card">
+					<div class="box">
+						<i class="fas fa-feather-alt"></i>
+						<div class="text">Content Writer</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+				</div>
+				<div class="card">
+					<div class="box">
+						<i class="fas fa-bold"></i>
+						<div class="text">Blogs</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+				</div>
+				<div class="card">
+					<div class="box">
+						<i class="fas fa-globe-africa"></i>
+						<div class="text">Web Hosting</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!--Portfolio-->
+	<section class="portfolio" id="portfolio"> <!--teams-->
+		<div class="max-width">
+			<h2 class="title">Portfolio</h2>
+			<div class="carousel owl-carousel">
+				<div class="card">
+					<div class="box">
+						<img src="Screenshot (30).png" alt="landscape">
+						<div class="text"><a href="https://techrevolution.netlify.app/"></a>Business Landing Page</div>
+						
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="box">
+						<img src="Screenshot (26).png" alt="landscape">
+						<div class="text"><a href="https://exchange-currency-za.netlify.app/"></a>Currency Ex App</div>
+						
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="box">
+						<img src="Screenshot (25).png" alt="landscape">
+						<div class="text"><a href="https://vue-notes-taking.netlify.app/"></a>Note taking</div>
+						
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="box">
+						<img src="https://image.freepik.com/foto-gratis/jardin-lavanda-nueva-zelanda-cielo-nublado_181624-12086.jpg" alt="landscape">
+						<div class="text">Gallery Website</div>
+						
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="box">
+						<img src="Screenshot (27).png" alt="landscape">
+						<div class="text"><a href="https://a-recipes-blog.netlify.app/"></a>Recipe Blog</div>
+						
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="box">
+						<img src="https://cdn.pixabay.com/photo/2020/09/07/16/35/canyon-5552326_960_720.jpg" alt="landscape">
+						
+						<div class="text"><a href="https://vuenote-taking.netlify.app/"></a>Vue note taking</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="box">
+						<img src="https://cdn.pixabay.com/photo/2015/06/19/21/24/the-road-815297_960_720.jpg" alt="landscape">
+						<div class="text">Movies Web site</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="box">
+						<img src="https://cdn.pixabay.com/photo/2017/01/19/23/46/panorama-1993645_960_720.jpg" alt="landscape">
+						<div class="text">Porfolio</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="box">
+						<img src="https://cdn.pixabay.com/photo/2016/08/09/21/54/yellowstone-national-park-1581879_960_720.jpg" alt="landscape">
+						<div class="text">Blog</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="box">
+						<img src="https://cdn.pixabay.com/photo/2020/08/24/21/41/couple-5515141_960_720.jpg" alt="landscape">
+						<div class="text">Profile</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!--Contact-->
+	<section class="contact" id="contact">
+		<div class="max-width">
+			<h2 class="title">Contact me</h2>
+			<div class="contact-content">
+				<div class="column left">
+					<div class="text">Feel free to contact</div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua.</p>
+					<div class="icons">
+						<div class="row">
+							<i class="fas fa-user"></i>
+							<div class="info">
+								<div class="head">Name</div>
+								<div class="sub-title">Adenly Mathebula</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<i class="fas fa-map-marker-alt"></i>
+							<div class="info">
+								<div class="head">Address</div>
+								<div class="sub-title">Clare A, Bushbuckridge, 1363.</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<i class="fas fa-envelope"></i>
+							<div class="info">
+								<div class="head">Email</div>
+								<div class="sub-title">Adenlymathebula@gmail.com</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="column right">
+					<div class="text">Send Message</div>
+					<form action="#">
+						<div class="fields">
+							<div class="field name">
+								<input type="text" placeholder="Name" required>
+							</div>
+
+							<div class="field email">
+								<input type="email" placeholder="Email" required>
+							</div>
+						</div>
+
+						<div class="field">
+							<input type="text" placeholder="Subject" required>
+						</div>
+
+						<div class="fields textarea">
+							<textarea cols="30" rows="10" placeholder="Describe project..." required></textarea>
+						</div>
+
+						<div class="button">
+							<button type="submit">Send message</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+<!--Footer-->
+	<footer>
+		<span>Created By <a href="#">Adenly mathebula</a> | <span class="far fa-copyright"></span> 2020 All rights reserved</span>
+		 
+	</footer>
+	
+	
+	<script src="script.js"></script>
+</body>
+</html>
