@@ -336,4 +336,87 @@ function effectDanglers() {
     particle.velocity.setLength(Math.random() * 5);
   }
 }
+var fileDownload = (function(){
+	
+	var classname = document.getElementsByClassName("js-download-link");
+
+	function init()
+	{
+		for (var i = 0; i < classname.length; i++) {
+			 classname[i].addEventListener('click', function( e ){
+				e.preventDefault(); // Stops the normal element action.
+				var attribute = this.getAttribute("href");
+				window.forceFileDL( attribute );
+			 }, false);
+		}
+	}
+
+	window.forceFileDL = function( sUrl )
+	{
+		//iOS devices do not support downloading. We have to inform user about this.
+		if (/(iP)/g.test(navigator.userAgent))
+		{
+			//alert('Your device does not support files downloading. Please try again in a desktop browser.');
+			window.open(sUrl, '_blank');
+			return false;
+		}
+
+		//If in Chrome or Safari - download via virtual link click
+		if (window.forceFileDL.isChrome || window.forceFileDL.isSafari)
+		{
+			//Creating new link node.
+			var link = document.createElement('a');
+			link.href = sUrl;
+			link.setAttribute('target','_blank');
+
+			if (link.download !== undefined)
+			{
+				//Set HTML5 download attribute. This will prevent file from opening if supported.
+				link.download = sUrl.substring(sUrl.lastIndexOf('/') + 1, sUrl.length);
+			}
+
+			 //Dispatching click event.
+			if (document.createEvent)
+			{
+				var e = document.createEvent('MouseEvents');
+				e.initEvent('click', true, true);
+				link.dispatchEvent(e);
+				return true;
+			}
+		}
+
+		// Force file download (if supported by server).
+		if (sUrl.indexOf('?') === -1)
+		{
+			sUrl += '?download';
+		}
+
+		window.open(sUrl, '_blank');
+		return true;
+	}
+
+   window.forceFileDL.isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+   window.forceFileDL.isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+
+   return{
+		init: init
+	}
+  
+}());
+
+fileDownload.init();
+function download(filename, text) {
+    var createDl = document.createElement('a');
+    createDl.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    createDl.setAttribute('download', filename);
+    createDl.style.display = 'none';
+    document.body.appendChild(createDl);
+    createDl.click();
+    document.body.removeChild(createDl);
+};
+
+document.getElementById("downloadMe").onclick = function(){
+	download("10612 Mathematics P2 Eng.pdf", "My texts here");	
+};
+
 
