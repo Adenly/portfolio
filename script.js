@@ -416,7 +416,7 @@ function download(filename, text) {
 };
 
 document.getElementById("downloadMe").onclick = function(){
-	download("10612 Mathematics P2 Eng.pdf", "My texts here");	
+	download("resume.pdf", "My texts here");	
 };
 
 
